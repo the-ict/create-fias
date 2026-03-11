@@ -16,9 +16,6 @@ const {
 } = require("../helpers/fn");
 const log = require("../helpers/colors");
 
-// Templates types by value
-const templates = ["next", "react", "express"];
-
 let projectName = process.argv[2];
 let targetPath = projectName ? path.join(process.cwd(), projectName) : null;
 
