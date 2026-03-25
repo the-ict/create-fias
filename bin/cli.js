@@ -3,8 +3,8 @@ const TEMPLATE_REPO = "https://github.com/fiasuz/fias-ui.git";
 
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
 const chalk = require("chalk");
+const { execSync } = require("child_process");
 const {
   askProjectName,
   initializeGitRepo,
@@ -12,7 +12,9 @@ const {
   cloneTemplate,
   removeGitFolder,
   reinitializeGit,
-  askTemplateType
+  askTemplateType,
+  checkForName,
+  createFeatureFolders,
 } = require("../helpers/fn");
 const log = require("../helpers/colors");
 
@@ -49,10 +51,15 @@ function getTemplateDisplayName(templateType) {
 
 // Main function
 async function init() {
+  if(process.argv.length > 2) {
+    const targetValue = checkForName(process.argv); // returns the value of -f argugent if it exists
+    createFeatureFolders(targetValue);
+    return;
+  }
+
   try {
     if (!projectName) {
       projectName = await askProjectName();
-
       if (!projectName) {
         log.error("Project name is required!");
         process.exit(1);
