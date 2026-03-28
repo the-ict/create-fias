@@ -125,6 +125,7 @@ function checkRootFolder() {
   return srcIndex !== -1;
 };
 
+// If target path ends with .ts then the function prepared to create a file, other case folder.
 function createPath(targetPath) {
   if(targetPath.endsWith(".ts")) {
     if(!fs.existsSync(targetPath)) {
