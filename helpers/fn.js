@@ -118,6 +118,7 @@ async function askTemplateType() {
   return template;
 };
 
+// Checks for we are in the src folder, returns boolean value.
 function checkRootFolder() {
   const currentDir = process.cwd();
   const srcIndex = currentDir.split("/").indexOf("src");
