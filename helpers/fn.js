@@ -145,7 +145,7 @@ function createPath(targetPath) {
   }
 }
 
-
+// It checks whether argv includes -f or not
 function checkForName(argv) {
   if (argv.includes("-f")) {
     const targetValue = argv[argv.indexOf("-f") + 1];
@@ -155,6 +155,7 @@ function checkForName(argv) {
   };
 };
 
+// This function will create feature folders
 function createFeatureFolders(featureFolderName) {
   const isRoot = checkRootFolder();
 
